@@ -1,7 +1,7 @@
 {
-  "name": "ally-custom-service",
-  "description": "Starter kit to create an Ally driver for an OAuth2 service",
-  "version": "0.0.0",
+  "name": "@c0ldplasma/adonisjs-ally-apple",
+  "description": "An Apple driver for Adonis.js Ally",
+  "version": "1.0.0",
   "main": "index.js",
   "type": "module",
   "files": [
@@ -36,7 +36,7 @@
     "jsonwebtoken": "^8.5.1",
     "jwks-rsa": "^2.0.5"
   },
-  "author": "",
+  "author": "C0ldPlasma",
   "license": "MIT",
   "keywords": [
     "social-auth",
