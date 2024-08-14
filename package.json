@@ -1,8 +1,8 @@
 {
   "name": "@c0ldplasma/adonisjs-ally-apple",
   "description": "An Apple driver for Adonis.js Ally",
-  "version": "1.0.1",
-  "main": "index.js",
+  "version": "1.0.3",
+  "main": "build/index.js",
   "type": "module",
   "files": [
     "build/index.js",
@@ -14,7 +14,8 @@
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "pretest": "npm run lint",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "tsc"
   },
   "devDependencies": {
     "@adonisjs/ally": "^5.0.0-7",

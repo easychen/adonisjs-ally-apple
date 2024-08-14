@@ -14,7 +14,7 @@ import type {
   AllyUserContract,
   ApiRequestContract,
   LiteralStringUnion,
-  RedirectRequestContract
+  RedirectRequestContract,
 } from '@adonisjs/ally/types'
 import JWKS, { CertSigningKey, JwksClient, RsaSigningKey } from 'jwks-rsa'
 import JWT from 'jsonwebtoken'
@@ -274,8 +274,7 @@ export class AppleDriver
   }
 
   async userFromToken(
-    accessToken: string,
-    callback?: (request: ApiRequestContract) => void
+    accessToken: string
   ): Promise<AllyUserContract<{ token: string; type: 'bearer' }>> {
     const user = await this.getUserInfo(accessToken)
 
