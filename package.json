@@ -1,7 +1,7 @@
 {
   "name": "@c0ldplasma/adonisjs-ally-apple",
   "description": "An Apple driver for Adonis.js Ally",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "build/index.js",
   "type": "module",
   "files": [
