@@ -48,5 +48,13 @@
     "extends": "@adonisjs/eslint-config/package"
   },
   "prettier": "@adonisjs/prettier-config",
-  "packageManager": "yarn@4.4.0"
+  "packageManager": "yarn@4.4.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/c0ldplasma/adonisjs-ally-apple.git"
+  },
+  "bugs": {
+    "url": "https://github.com/c0ldplasma/adonisjs-ally-apple/issues",
+    "email": "adonisjs-ally-apple.bugs@alias.flamari.com"
+  }
 }
