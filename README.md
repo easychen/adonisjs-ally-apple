@@ -2,7 +2,7 @@
 
 > adonis, adonis-ally, apple
 
-[![npm-image]][npm-url] [![license-image]][license-url] [![typescript-image]][typescript-url]
+[![npm-image]][npm-url] [![license-image]][license-url] ![typescript-image]
 
 This driver extends Adonis Ally and allows to integrate Apple Sign In.
 
