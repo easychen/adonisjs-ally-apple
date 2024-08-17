@@ -40,7 +40,7 @@ Apple Driver environment variables have some specific usage:
 - `APPLE_TEAM_ID` - you teams' id in Apple system, it can be found [here](https://developer.apple.com/account/#/membership)
 - `APPLE_APP_ID` - your app idenifier, for ex: com.adonis.ally
 
-For usage examples for Adonis Ally and its methods consult Adonis.js [official docs](https://docs.adonisjs.com/guides/auth/social).
+For usage examples for Adonis Ally and its methods consult Adonis.js [official docs](https://docs.adonisjs.com/guides/authentication/social-authentication).
 
 [npm-image]: https://img.shields.io/npm/v/@c0ldplasma/adonisjs-ally-apple.svg?style=for-the-badge&logo=npm
 [npm-url]: https://npmjs.org/package/@c0ldplasma/adonisjs-ally-apple 'npm'
