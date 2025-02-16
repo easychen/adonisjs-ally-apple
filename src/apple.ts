@@ -229,7 +229,7 @@ export class AppleDriver
       expiresIn: 60,
       header: { alg: 'ES256', kid: this.config.clientId },
     })
-    console.log("generateclientSecret", this.config.platform, this.config.platform === 'app' ? this.config.appClientId : this.config.webServicesId);
+    // console.log("generateclientSecret", this.config.platform, this.config.platform === 'app' ? this.config.appClientId : this.config.webServicesId);
     return clientSecret
   }
 
