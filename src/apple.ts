@@ -68,19 +68,20 @@ export type AppleTokenDecoded = {
 
 /**
  * Options available for Apple
- * @param appKeyId App ID of your app
+ * @param appClientId App ID of your app
  * @param teamId Team ID of your Apple Developer Account
  * @param keyId Key ID, received from https://developer.apple.com/account/resources/authkeys/list
  * @param privateKey Private key, downloaded from https://developer.apple.com/account/resources/authkeys/list
  */
 export type AppleDriverConfig = {
   driver: 'apple'
-  appKeyId: string
+  appClientId: string
   webServicesId: string
   teamId: string
   keyId: string
   privateKey: string
   callbackUrl: string
+  platform: 'app' | 'web'
   scopes?: LiteralStringUnion<AppleScopes>[]
 }
 
@@ -187,10 +188,10 @@ export class AppleDriver
      * Define user defined scopes or the default one's
      */
     request.scopes(this.config.scopes || ['email'])
-
-    request.param('client_id', this.config.appKeyId)
+  
+    request.param('client_id', this.config.platform === 'web' ? this.config.webServicesId : this.config.appClientId)
     request.param('response_type', 'code')
-    request.param('response_mode', 'form_post')
+    request.param('response_mode', this.config.platform === 'web' ? 'form_post' : 'query')
     request.param('grant_type', 'authorization_code')
   }
 
@@ -224,7 +225,7 @@ export class AppleDriver
       keyid: this.config.keyId,
       issuer: this.config.teamId,
       audience: 'https://appleid.apple.com',
-      subject: this.config.appKeyId,
+      subject: this.config.platform === 'web' ? this.config.webServicesId : this.config.appClientId,
       expiresIn: 60,
       header: { alg: 'ES256', kid: this.config.keyId },
     })
@@ -238,7 +239,7 @@ export class AppleDriver
     const signingKey = await this.getAppleSigningKey(token)
     const decodedUser = JWT.verify(token, signingKey, {
       issuer: 'https://appleid.apple.com',
-      audience: this.config.appKeyId,
+      audience: this.config.appClientId,
     })
     const firstName = (decodedUser as AppleTokenDecoded)?.user?.name?.firstName || ''
     const lastName = (decodedUser as AppleTokenDecoded)?.user?.name?.lastName || ''
