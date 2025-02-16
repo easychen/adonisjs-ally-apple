@@ -68,17 +68,18 @@ export type AppleTokenDecoded = {
 
 /**
  * Options available for Apple
- * @param appId App ID of your app
+ * @param appKeyId App ID of your app
  * @param teamId Team ID of your Apple Developer Account
- * @param clientId Key ID, received from https://developer.apple.com/account/resources/authkeys/list
- * @param clientSecret Private key, downloaded from https://developer.apple.com/account/resources/authkeys/list
+ * @param keyId Key ID, received from https://developer.apple.com/account/resources/authkeys/list
+ * @param privateKey Private key, downloaded from https://developer.apple.com/account/resources/authkeys/list
  */
 export type AppleDriverConfig = {
   driver: 'apple'
-  appId: string
+  appKeyId: string
+  webServicesId: string
   teamId: string
-  clientId: string
-  clientSecret: string
+  keyId: string
+  privateKey: string
   callbackUrl: string
   scopes?: LiteralStringUnion<AppleScopes>[]
 }
@@ -187,7 +188,7 @@ export class AppleDriver
      */
     request.scopes(this.config.scopes || ['email'])
 
-    request.param('client_id', this.config.appId)
+    request.param('client_id', this.config.appKeyId)
     request.param('response_type', 'code')
     request.param('response_mode', 'form_post')
     request.param('grant_type', 'authorization_code')
@@ -215,19 +216,19 @@ export class AppleDriver
   /**
    * Generates Client Secret
    * https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens
-   * @returns clientSecret
+   * @returns privateKey
    */
-  protected generateClientSecret(): string {
-    const clientSecret = JWT.sign({}, this.config.clientSecret, {
+  protected generateprivateKey(): string {
+    const privateKey = JWT.sign({}, this.config.privateKey, {
       algorithm: 'ES256',
-      keyid: this.config.clientId,
+      keyid: this.config.keyId,
       issuer: this.config.teamId,
       audience: 'https://appleid.apple.com',
-      subject: this.config.appId,
+      subject: this.config.appKeyId,
       expiresIn: 60,
-      header: { alg: 'ES256', kid: this.config.clientId },
+      header: { alg: 'ES256', kid: this.config.keyId },
     })
-    return clientSecret
+    return privateKey
   }
 
   /**
@@ -237,7 +238,7 @@ export class AppleDriver
     const signingKey = await this.getAppleSigningKey(token)
     const decodedUser = JWT.verify(token, signingKey, {
       issuer: 'https://appleid.apple.com',
-      audience: this.config.appId,
+      audience: this.config.appKeyId,
     })
     const firstName = (decodedUser as AppleTokenDecoded)?.user?.name?.firstName || ''
     const lastName = (decodedUser as AppleTokenDecoded)?.user?.name?.lastName || ''

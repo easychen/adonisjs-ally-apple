@@ -37,7 +37,7 @@
     "jsonwebtoken": "^8.5.1",
     "jwks-rsa": "^2.0.5"
   },
-  "author": "C0ldPlasma",
+  "author": "easychen",
   "license": "MIT",
   "keywords": [
     "social-auth",
@@ -51,10 +51,10 @@
   "packageManager": "yarn@4.4.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/c0ldplasma/adonisjs-ally-apple.git"
+    "url": "git+https://github.com/easychen/adonisjs-ally-apple.git"
   },
   "bugs": {
-    "url": "https://github.com/c0ldplasma/adonisjs-ally-apple/issues",
-    "email": "adonisjs-ally-apple.bugs@alias.flamari.com"
+    "url": "https://github.com/easychen/adonisjs-ally-apple/issues",
+    "email": "easychen@gmail.com"
   }
 }
