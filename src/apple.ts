@@ -187,11 +187,11 @@ export class AppleDriver
     /**
      * Define user defined scopes or the default one's
      */
-    request.scopes(this.config.scopes || ['email'])
+    request.scopes(this.config.scopes || ['name', 'email'])
   
     request.param('client_id', this.config.platform === 'web' ? this.config.webServicesId : this.config.appClientId)
     request.param('response_type', 'code')
-    request.param('response_mode', this.config.platform === 'web' ? 'form_post' : 'query')
+    request.param('response_mode', 'form_post')
     request.param('grant_type', 'authorization_code')
   }
 
@@ -219,16 +219,17 @@ export class AppleDriver
    * https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens
    * @returns clientSecret
    */
-  protected generateclientSecret(): string {
+  public generateclientSecret(): string {
     const clientSecret = JWT.sign({}, this.config.clientSecret, {
       algorithm: 'ES256',
       keyid: this.config.clientId,
       issuer: this.config.teamId,
       audience: 'https://appleid.apple.com',
-      subject: this.config.platform === 'web' ? this.config.webServicesId : this.config.appClientId,
+      subject: this.config.platform === 'app' ? this.config.appClientId : this.config.webServicesId,
       expiresIn: 60,
       header: { alg: 'ES256', kid: this.config.clientId },
     })
+    console.log("generateclientSecret", this.config.platform, this.config.platform === 'app' ? this.config.appClientId : this.config.webServicesId);
     return clientSecret
   }
 
@@ -239,16 +240,18 @@ export class AppleDriver
     const signingKey = await this.getAppleSigningKey(token)
     const decodedUser = JWT.verify(token, signingKey, {
       issuer: 'https://appleid.apple.com',
-      audience: this.config.appClientId,
+      audience: this.config.platform === 'app' ? this.config.appClientId : this.config.webServicesId,
     })
     const firstName = (decodedUser as AppleTokenDecoded)?.user?.name?.firstName || ''
     const lastName = (decodedUser as AppleTokenDecoded)?.user?.name?.lastName || ''
+    // nickname改用 email @ 前的部分
+    const nickname = (decodedUser as AppleTokenDecoded)?.email?.split('@')[0] || (decodedUser as AppleTokenDecoded).sub
 
     return {
       id: (decodedUser as AppleTokenDecoded).sub,
       avatarUrl: null,
       original: null,
-      nickName: (decodedUser as AppleTokenDecoded).sub,
+      nickName: nickname,
       name: `${firstName}${lastName ? ` ${lastName}` : ''}`,
       email: (decodedUser as AppleTokenDecoded).email,
       emailVerificationState:
