@@ -9,9 +9,9 @@ This driver extends Adonis Ally and allows to integrate Apple Sign In.
 ## Installation
 
 ```bash
-npm install @c0ldplasma/adonisjs-ally-apple
+npm install easy-adonisjs-ally-apple
 # or
-yarn add @c0ldplasma/adonisjs-ally-apple
+yarn add easy-adonisjs-ally-apple
 ```
 
 As the package has been installed, you have to configure it by running a command:
@@ -44,9 +44,9 @@ Apple Driver environment variables have some specific usage:
 
 For usage examples for Adonis Ally and its methods consult Adonis.js [official docs](https://docs.adonisjs.com/guides/authentication/social-authentication).
 
-[npm-image]: https://img.shields.io/npm/v/@c0ldplasma/adonisjs-ally-apple.svg?style=for-the-badge&logo=npm
-[npm-url]: https://npmjs.org/package/@c0ldplasma/adonisjs-ally-apple 'npm'
-[license-image]: https://img.shields.io/npm/l/@c0ldplasma/adonisjs-ally-apple?color=blueviolet&style=for-the-badge
+[npm-image]: https://img.shields.io/npm/v/easy-adonisjs-ally-apple.svg?style=for-the-badge&logo=npm
+[npm-url]: https://npmjs.org/package/easy-adonisjs-ally-apple 'npm'
+[license-image]: https://img.shields.io/npm/l/easy-adonisjs-ally-apple?color=blueviolet&style=for-the-badge
 [license-url]: LICENSE 'license'
 [typescript-image]: https://img.shields.io/badge/Typescript-294E80.svg?style=for-the-badge&logo=typescript
 [typescript-url]: "typescript"

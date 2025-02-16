@@ -11,14 +11,14 @@ const RAW_RUNTIME_STATE =
   ],\
   "dependencyTreeRoots": [\
     {\
-      "name": "@c0ldplasma/adonisjs-ally-apple",\
+      "name": "easy-adonisjs-ally-apple",\
       "reference": "workspace:."\
     }\
   ],\
   "enableTopLevelFallback": true,\
   "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
   "fallbackExclusionList": [\
-    ["@c0ldplasma/adonisjs-ally-apple", ["workspace:."]]\
+    ["easy-adonisjs-ally-apple", ["workspace:."]]\
   ],\
   "fallbackPool": [\
   ],\
@@ -514,11 +514,11 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["@c0ldplasma/adonisjs-ally-apple", [\
+    ["easy-adonisjs-ally-apple", [\
       ["workspace:.", {\
         "packageLocation": "./",\
         "packageDependencies": [\
-          ["@c0ldplasma/adonisjs-ally-apple", "workspace:."],\
+          ["easy-adonisjs-ally-apple", "workspace:."],\
           ["@adonisjs/ally", "virtual:43ed6858ffcb411562b9fc64aee651ee7ca932b5c00138086c5321560c35e878215714dbaa507b4038037ca29e43f03266395aa923570159fc673221e1d4527c#npm:5.0.2"],\
           ["@adonisjs/core", "virtual:43ed6858ffcb411562b9fc64aee651ee7ca932b5c00138086c5321560c35e878215714dbaa507b4038037ca29e43f03266395aa923570159fc673221e1d4527c#npm:6.17.2"],\
           ["@adonisjs/eslint-config", "virtual:43ed6858ffcb411562b9fc64aee651ee7ca932b5c00138086c5321560c35e878215714dbaa507b4038037ca29e43f03266395aa923570159fc673221e1d4527c#npm:1.3.0"],\
